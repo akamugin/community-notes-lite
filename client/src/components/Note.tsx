@@ -4,7 +4,7 @@ type NoteProps = {
     postId: number;
 }
 
-const Note = (props: NoteProps) => {
+export const Note = (props: NoteProps) => {
     
     return (
         <div>
