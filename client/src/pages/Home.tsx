@@ -1,14 +1,25 @@
 import React from "react";
 import { Post } from "../components/Post"
+import { useEffect, useState } from 'react';
+import { getPosts } from '../api';
 
 export const Home = () => {
-    return (
-    <div>
-        <Post
-            id={1}
-            title="Example Post"
-            content="This is the content of the example post"
-        />
-    </div>
-    )
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        getPosts().then(setPosts);
+      }, []);
+      
+      return (
+        <div>
+          {posts.map(post => (
+            <Post 
+              key={post.id}
+              id={post.id}
+              title={post.title}
+              content={post.content}
+            />
+          ))}
+        </div>
+      );
+      
 }
